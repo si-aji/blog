@@ -8,7 +8,7 @@ tags:
 - Laragon
 - Development Tools
 category:
-- Development
+- Development Tools
 ---
 
 When it comes to local development, especially for PHP and Laravel projects, choosing the right tools will make our life easier. There are a lot of options out there, from classic choice like XAMPP or even Laragon, to newer Laravel focused solution like Valet and Herd. We will try to dive even further to compare the development tools.
