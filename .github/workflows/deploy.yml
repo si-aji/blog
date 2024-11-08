@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Check for Package changes
         uses: appleboy/ssh-action@master
-        id: check_user
+        id: package_check
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
@@ -57,7 +57,7 @@ jobs:
 
       - name: Install package changes
         uses: appleboy/ssh-action@master
-        id: check_user
+        id: package_install
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
