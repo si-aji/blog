@@ -1,0 +1,24 @@
+name: Deploy Application
+
+on:
+  push:
+    branches:
+      - build
+
+jobs:
+  build:
+    name: Pull Changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloning Repo
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            whoami
+            pwd
+            echo "========= Github Action for Pulling Data"
+            cd /www/wwwroot/siaji.com
