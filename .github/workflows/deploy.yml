@@ -23,7 +23,7 @@ jobs:
               echo 'user found'
 
               cd /www/wwwroot/siaji.com
-              CHANGES=$(sudo -u www git diff --name-only FETCH_HEAD~1 | grep 'package.json' || echo "no_changes")
+              CHANGES=$(sudo -u www git diff --name-only HEAD origin/main | grep 'package.json' || echo "no_changes")
               # Use proper comparison for string variables
               if [ "$CHANGES" = 'no_changes' ]; then
                   echo "No Changes in package.json"
@@ -34,10 +34,6 @@ jobs:
                   echo "========= Handle package"
                   cd /www/wwwroot/siaji.com
                   sudo -u www rm -rf package-lock.json
-                  sudo -u www git checkout release
-                  sudo -u www git reset --hard
-                  sudo -u www git pull origin release
-                  sudo -u www npm install
               fi
             else
               echo 'user not found'
@@ -58,6 +54,35 @@ jobs:
             sudo -u www git checkout release
             sudo -u www git reset --hard
             sudo -u www git pull origin release
+
+      - name: Install package changes
+        uses: appleboy/ssh-action@master
+        id: check_user
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            if sudo /usr/bin/id www >/dev/null 2>&1; then
+              echo 'user found'
+
+              cd /www/wwwroot/siaji.com
+              CHANGES=$(sudo -u www git diff --name-only HEAD~1 HEAD | grep 'package.json' || echo "no_changes")
+              # Use proper comparison for string variables
+              if [ "$CHANGES" = 'no_changes' ]; then
+                  echo "No Changes in package.json"
+              else
+                  echo "Changes detected, install dependency"
+                  whoami
+                  pwd
+                  echo "========= Handle package"
+                  cd /www/wwwroot/siaji.com
+                  sudo -u www npm install
+              fi
+            else
+              echo 'user not found'
+            fi
 
   deploy:
     name: Deploy App
