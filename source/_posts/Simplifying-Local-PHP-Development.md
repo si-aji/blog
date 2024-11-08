@@ -93,7 +93,7 @@ The newest Laravel-developed tools, just like Valet but with more support to Win
 |------------------------|-----------------------|-----------------------|-----------------------|-----------------------|
 | **Platform**           | Cross-Platform        | Windows               | macOS                 | macOS & Windows       |
 | **PHP Version Switch** | ❌                    | ✔️                    | ❌                    | ✔️                    |
-| **Auto-Routing**       | ❌                    | ✔️                    | ✔️                    | ❌                    |
+| **Auto-Routing**       | ❌                    | ✔️                    | ✔️                    | ✔️                    |
 | **Lightweight**        | ❌                    | ✔️                    | ✔️                    | ✔️                    |
 | **Full Environment**   | ✔️                    | ✔️                    | ❌                    | ❌                    |
 
