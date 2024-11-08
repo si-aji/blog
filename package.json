@@ -1,6 +1,6 @@
 {
   "name": "siaji-blog",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "private": true,
   "scripts": {
     "build": "hexo generate",
