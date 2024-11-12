@@ -1,5 +1,5 @@
 ---
-title: disclaimer
+title: Disclaimer
 date: 2024-11-08 13:28:52
 ---
 
