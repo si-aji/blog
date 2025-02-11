@@ -34,9 +34,12 @@ One of the most significant improvements in Tailwind CSS v4 is the introduction 
 With v4, you can now define *any value directly in the class name* without needing brackets. Tailwind now generates CSS dynamically using a new calculation system:
 
 ```css
-.px-1.275 {
-    padding-left: calc(var(--spacing) * 1.275);
-    padding-right: calc(var(--spacing) * 1.275);
+.px-5.1 {
+    // --spacing are 0.25rem
+    // 5.1 * --spacing will give 1.275rem
+
+    padding-left: calc(var(--spacing) * 5.1);
+    padding-right: calc(var(--spacing) * 5.1);
 }
 ```
 
